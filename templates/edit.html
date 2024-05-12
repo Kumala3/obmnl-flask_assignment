@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,7 @@
             padding: 20px;
             margin: 20px auto;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .form-footer {
@@ -26,6 +27,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="text-center">Edit Transaction</h1>
@@ -37,7 +39,8 @@
 
             <div class="form-group">
                 <label for="amount">Amount:</label>
-                <input type="number" name="amount" id="amount" class="form-control" value="{{ transaction.amount }}" required>
+                <input type="number" name="amount" id="amount" class="form-control" value="{{ transaction.amount }}"
+                    required>
             </div>
 
             <div class="form-footer">
@@ -47,4 +50,5 @@
         </form>
     </div>
 </body>
+
 </html>
