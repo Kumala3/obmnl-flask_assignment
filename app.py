@@ -38,25 +38,25 @@ def add_transaction():
 @app.route("/edit/<int:transaction_id>", methods=["PUT", "POST"])
 def edit_transaction():
     if request.method == "POST":
-        transaction_id = int(request.form["id"])
-        transaction = next(
-            (
-                transaction
-                for transaction in transactions
-                if transaction["id"] == transaction_id
-            ),
-            None,
-        )
-
-        if transaction:
-            transaction["date"] = request.form["date"]
-            transaction["amount"] = request.form["amount"]
-
+        transaction_id = request.args.get("transaction_id")
+        
+        for transaction in transactions:
+            if transaction["id"] == transaction_id:
+                transaction["date"] = request.form["date"]
+                transaction["amount"] = float(request.form["amount"])
+                break
+        
         return redirect(url_for("get_transactions"))
-    return render_template("edit.html", transaction_id=transaction_id)
+    for transaction in transactions:
+        if transaction["id"] == transaction_id:
+            return render_template("edit.html", transaction=transaction)
 
 
 # Delete operation
+@app.route("/delete/<int:transaction_id>", methods=["DELETE", "GET"])
+def delete_transaction():
+    pass
+
 
 # Run the Flask app
 if __name__ == "__main__":
